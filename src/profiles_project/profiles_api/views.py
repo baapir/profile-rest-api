@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 
-
+from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -23,7 +23,8 @@ class Helloapiview(APIView):
              'Gives you must control on your logic',
              'Its mapped manully to URLs'
         ]
-        return Response({'message':'Hello', 'an_apiview': an_apiview})
+
+        return Response({'message':'Hello', 'an_apiview':an_apiview})
 
     def post(self, request):
         """Create hello message with our name"""
@@ -51,3 +52,22 @@ class Helloapiview(APIView):
         """Deletes and object"""
 
         return Response({'method' : 'delete'})
+
+
+
+
+
+
+class Helloviewsets(viewsets.ViewSet):
+     """Test API ViewSet"""
+
+     def list(self, request):
+         """Return a Hello Message"""
+
+         a_viewset = [
+             'uses actions (list, create, retrieve, update, partial_update)',
+             'It is similar to triditional django view',
+             'provides more fuctionality with less code',
+             'Its mapped automaticly to URLs using Routers'
+         ]
+         return Response({'message':'Hello', 'a_viewset':a_viewset})

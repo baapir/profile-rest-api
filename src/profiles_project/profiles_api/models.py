@@ -33,7 +33,6 @@ class UserProfileManager(BaseUserManager):
 
         return user
 
-
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     """Represent user profile inside our system """
 
